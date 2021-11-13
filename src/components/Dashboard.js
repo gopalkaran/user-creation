@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import axios from "axios";
 
 
-// import styles from "../styles/Dashboard.module.css";
+import styles from "../css/Dashboard.module.css";
 
 
 const Dashboard = () => {
@@ -55,17 +55,17 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.container}>
       <h1>Profile</h1>
-      <div>{location.state.firstName}</div>
-      <div>{location.state.email}</div>
-      <div>{location.state.phoneNumber}</div>
+      <div className={styles.item}>Name: <span>{location.state.firstName}</span></div>
+      <div className={styles.item}>Email: <span>{location.state.email}</span></div>
+      <div className={styles.item}>Phone: <span>{location.state.phoneNumber}</span></div>
        
    
-      <div >
-        <button onClick={signoutUser}>Sign out</button>
+      <div>
+        <button onClick={signoutUser} className={styles.btn}>Sign out</button>
       </div>
-    </>
+    </div>
   );
 };
 

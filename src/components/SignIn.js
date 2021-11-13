@@ -81,7 +81,7 @@ const SignIn = () => {
           />
         </div>
         <div>
-          <input type="submit" value="Login" disabled={loading} />
+          <input type="submit" value="Login" disabled={loading} className={styles.btn} />
         </div>
       </form>
 

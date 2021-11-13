@@ -1,0 +1,30 @@
+.container{
+   background: white;
+   width: 500px;
+   height: 50vh;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+
+}
+
+.item{
+    background-color: #F3F4F6;
+    padding: 0.5rem;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
