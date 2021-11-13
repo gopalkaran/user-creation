@@ -12,7 +12,7 @@
 }
 
 .container h1{
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .formGroup{
@@ -20,7 +20,9 @@
     display: flex;
     justify-content: space-between;
     /* margin-bottom: 0.5rem; */
-    width: 50%;
+    width: 65%;
+    padding: 0 0 0 1rem;
+    align-items: center;
 }
 
 .login{
@@ -40,4 +42,13 @@
     padding: 1rem;
     top: 0;
     width: 500px;
+}
+
+.btn{
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
 }

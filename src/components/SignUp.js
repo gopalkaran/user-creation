@@ -54,11 +54,11 @@ const SignUp = () => {
     .catch((error) => {
         console.log(error)
     });
-
+    if(userverification_token){
     axios.post('https://hiring.getbasis.co/candidate/users', {...data, token : userverification_token})
     .then(res =>{
         console.log(res);
-        const {data : {results : {user : {_id,token, email , firstName, phoneNumber}}}} = res;
+        const {data : {results : {user : {_id, token, email , firstName, phoneNumber}}}} = res;
         dispatch(storeid(_id));
         dispatch(storeLoginToken(token));
         history.push("/dashboard", {email, firstName, phoneNumber});
@@ -67,6 +67,7 @@ const SignUp = () => {
     .catch(err => {
         console.log(err);
     })
+    }
     
 
     // try {
@@ -160,13 +161,10 @@ const SignUp = () => {
           </label>
         </div>
         <div>
-          <input type="submit" value="Sign Up" disabled={loading} />
+          <input type="submit" value="Sign Up" disabled={loading} className={styles.btn} />
         </div>
       </form>
-      <div className={styles.login}>
-        <p>Have an account?</p>
-        <Link to="/">Log in</Link>
-      </div>
+
     </>
   );
 };
