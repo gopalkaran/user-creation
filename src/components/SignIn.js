@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styles from '../css/SignIn.module.css';
-import {storeid, storetoken} from "../actions/action"
+import {storeid, storeLoginToken, storeEmailVerificationToken} from "../actions/action"
 import {useDispatch} from 'react-redux';
 
 const SignIn = () => {
@@ -29,15 +29,16 @@ const SignIn = () => {
         console.log(res.data)
         const {data : {results : {isLogin, token}}} = res;
         console.log(isLogin , token);
-        dispatch(storetoken(token));
+        dispatch(storeEmailVerificationToken(token));
         axios
         .put('https://hiring.getbasis.co/candidate/users/email/verify', {email : email,token : token, verificationCode :'112233'})
         .then((response) => {
            console.log(response.data)
            const {data : {results :  {isLogin }}} = response;
            if(isLogin) {
-              const {data : {results : {user : {_id, email , firstName, phoneNumber}}}} = response;
-              dispatch(storeid(_id))
+              const {data : {results : {user : {_id, token, email , firstName, phoneNumber}}}} = response;
+              dispatch(storeid(_id));
+              dispatch(storeLoginToken(token));
               history.push("/dashboard", {email, firstName, phoneNumber});
            }
            else{
@@ -83,14 +84,9 @@ const SignIn = () => {
           <input type="submit" value="Login" disabled={loading} />
         </div>
       </form>
-      <div>
-        <Link to="/reset">Forgot password?</Link>
+
       </div>
-      </div>
-      <div className={styles.signUp}>
-        <p>Don't have an account?</p>
-        <Link to="/signup">Sign up</Link>
-      </div>
+
       {error && <div className={styles.error}>{error}</div>}
     </>
   );

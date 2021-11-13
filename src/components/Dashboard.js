@@ -23,12 +23,12 @@ const Dashboard = () => {
 
   const history = useHistory();
 
-  const userId = useSelector(state => state.user);
+  const {user_id, userlogin_token} = useSelector(state => state.user);
 
   const signoutUser = async () => {
 
     try{
-        const res = await axios.delete(`https://hiring.getbasis.co/candidate/users/logout/${userId}`);
+        const res = await axios.delete(`https://hiring.getbasis.co/candidate/users/logout/${user_id}`,{ headers: {Authorization : `Bearer ${user_id},${userlogin_token}`} });
         console.log(res);
         history.push("/");
     }
@@ -50,7 +50,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    console.log(userId);
+    console.log(user_id, userlogin_token);
     
   }, []);
 

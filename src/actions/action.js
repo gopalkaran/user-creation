@@ -5,9 +5,22 @@ export const storeid = (id) =>{
     }
 }
 
-export const storetoken = (token) => {
+export const storeLoginToken = (token) => {
   return {
-    type : 'STORE_TOKEN',
+    type : 'STORE_LOGIN_TOKEN',
     payload : token
   }
+}
+
+export const storeEmailVerificationToken = (token) => {
+  return {
+    type : 'STORE_VERIFICATION_TOKEN',
+    payload : token
+  }
+}
+
+export const clearstore = () => {
+  return {
+     type:"CLEAR_STORE"
+ };
 }
