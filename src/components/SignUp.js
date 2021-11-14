@@ -20,7 +20,6 @@ const SignUp = () => {
     token : "",
   });
 
-  const [error, setError] = useState("");
  
   const dispatch = useDispatch();
 
@@ -64,18 +63,7 @@ const SignUp = () => {
         console.log(err);
     })
     }
-    
 
-    // try {
-    //   setError("");
-
-    //   history.push("/dashboard");
-    // } catch {
-    //   setError("Failed to create an account");
-    //   setTimeout(() => {
-    //     setError("");
-    //   }, 3000);
-    // }
   };
 
 
@@ -86,7 +74,6 @@ const SignUp = () => {
 
   return (
     <>
-      {error && <div className={styles.error}>{error}</div>}
       <form onSubmit={onSubmitHandler} className={styles.container}>
         <h1>Sign up</h1>
         <div className={styles.formGroup}>
