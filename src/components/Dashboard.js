@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import {useSelector} from 'react-redux';
 import axios from "axios";
@@ -32,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     console.log(user_id, userlogin_token);
     
-  }, []);
+  }, [user_id, userlogin_token]);
 
   return (
     <div className={styles.container}>

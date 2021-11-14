@@ -67,9 +67,14 @@ const SignUp = () => {
   };
 
 
+
+
   useEffect(() => {
+    function setEmail(){
       setData({...data, email : location.state.email});
-  }, [location.state.email])
+    }
+    setEmail();
+  }, [])
 
 
   return (
