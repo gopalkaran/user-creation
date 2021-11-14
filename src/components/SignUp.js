@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import styles from "../css/SignUp.module.css";
 import axios from "axios";
 import {useSelector} from 'react-redux';
@@ -19,17 +19,14 @@ const SignUp = () => {
     agreeToPrivacyPolicy : false,
     token : "",
   });
-//   const [agreeToPrivacyPolicy, setAgreeToPrivacyPolicy] = useState(false);
 
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
  
   const dispatch = useDispatch();
 
 
   const history = useHistory();
   const location = useLocation();
-//   const {state : {email}} = location;
 
   const {userverification_token} = useSelector(state => state.user);
 
@@ -39,7 +36,6 @@ const SignUp = () => {
   };
 
   const onMarkHandler = (e) => {
-    //   setAgreeToPrivacyPolicy(e.target.checked);
       setData({ ...data, [e.target.name]: e.target.checked });
   }
 
@@ -72,7 +68,6 @@ const SignUp = () => {
 
     // try {
     //   setError("");
-    //   setLoading(true);
 
     //   history.push("/dashboard");
     // } catch {
@@ -81,18 +76,12 @@ const SignUp = () => {
     //     setError("");
     //   }, 3000);
     // }
-    // setLoading(false);
   };
 
 
   useEffect(() => {
       setData({...data, email : location.state.email});
   }, [location.state.email])
-
-//   useEffect(() => {
-//     setData({...data, token : user_token});
-//   }, [])
-
 
 
   return (
@@ -161,7 +150,7 @@ const SignUp = () => {
           </label>
         </div>
         <div>
-          <input type="submit" value="Sign Up" disabled={loading} className={styles.btn} />
+          <input type="submit" value="Sign Up"  className={styles.btn} />
         </div>
       </form>
 

@@ -12,7 +12,6 @@ const SignIn = () => {
   const history = useHistory();
   const [error, setError] = useState("");
 
-  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   
@@ -52,7 +51,6 @@ const SignIn = () => {
 
     // try {
     //   setError("");
-    //   setLoading(true);
     //   history.push("/dashboard");
     // } catch {
     //   setError("Failed to sign in");
@@ -60,7 +58,6 @@ const SignIn = () => {
     //     setError("");
     //   }, 3000);
     // }
-    // setLoading(false);
   };
   return (
     <>
@@ -81,7 +78,7 @@ const SignIn = () => {
           />
         </div>
         <div>
-          <input type="submit" value="Login" disabled={loading} className={styles.btn} />
+          <input type="submit" value="Login"  className={styles.btn} />
         </div>
       </form>
 

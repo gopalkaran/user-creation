@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import {useSelector} from 'react-redux';
 import axios from "axios";
 
@@ -11,15 +11,6 @@ const Dashboard = () => {
   const location = useLocation();  
   const [error, setError] = useState("");
 
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    phone: ""
-  });
-
-
-
-  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
