@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styles from '../css/SignIn.module.css';
-import {storeid, storeLoginToken, storeEmailVerificationToken} from "../actions/action"
+import { storeEmailVerificationToken} from "../actions/action"
 import {useDispatch} from 'react-redux';
 
 const SignIn = () => {
