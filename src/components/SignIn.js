@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styles from '../css/SignIn.module.css';
 import {storeid, storeLoginToken, storeEmailVerificationToken} from "../actions/action"
 import {useDispatch} from 'react-redux';
@@ -10,7 +10,6 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
 
   const history = useHistory();
-  const [error, setError] = useState("");
 
 
   const dispatch = useDispatch();
@@ -49,15 +48,7 @@ const SignIn = () => {
     })
     .catch(err => console.log(err))
 
-    // try {
-    //   setError("");
-    //   history.push("/dashboard");
-    // } catch {
-    //   setError("Failed to sign in");
-    //   setTimeout(() => {
-    //     setError("");
-    //   }, 3000);
-    // }
+
   };
   return (
     <>
@@ -84,7 +75,6 @@ const SignIn = () => {
 
       </div>
 
-      {error && <div className={styles.error}>{error}</div>}
     </>
   );
 };

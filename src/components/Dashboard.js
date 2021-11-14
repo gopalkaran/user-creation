@@ -9,7 +9,6 @@ import styles from "../css/Dashboard.module.css";
 
 const Dashboard = () => {
   const location = useLocation();  
-  const [error, setError] = useState("");
 
 
   const history = useHistory();
@@ -28,16 +27,6 @@ const Dashboard = () => {
         console.log(error.response);
     }
 
-    // setError("");
-    // try {
-    //   await logout();
-    //   history.push("/");
-    // } catch {
-    //   setError("Failed to log out");
-    //   setTimeout(() => {
-    //     setError("");
-    //   }, 3000);
-    // }
   };
 
   useEffect(() => {
