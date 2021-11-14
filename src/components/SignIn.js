@@ -28,23 +28,7 @@ const SignIn = () => {
         const {data : {results : {isLogin, token}}} = res;
         console.log(isLogin , token);
         dispatch(storeEmailVerificationToken(token));
-        axios
-        .put('https://hiring.getbasis.co/candidate/users/email/verify', {email : email,token : token, verificationCode :'112233'})
-        .then((response) => {
-           console.log(response.data)
-           const {data : {results :  {isLogin }}} = response;
-           if(isLogin) {
-              const {data : {results : {user : {_id, token, email , firstName, phoneNumber}}}} = response;
-              dispatch(storeid(_id));
-              dispatch(storeLoginToken(token));
-              history.push("/dashboard", {email, firstName, phoneNumber});
-           }
-           else{
-              history.push("/signup", {email});
-           }
-        });
-
-        
+        history.push('/verifytoken', {email, token})
     })
     .catch(err => console.log(err))
 
