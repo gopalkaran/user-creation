@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Getting Started with User Profile Creation and Authenticaation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Packages Used
 
-In the project directory, you can run:
+### `redux`
+### `react-redux`
+### `react-router-dom`
+### `axios`
 
-### `npm start`
+## Project Flow
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### SignIn
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This component will take email id from user. upon clicking of the signin button, request email verification api will response with islogin and token. we will send email and token to the verify token component.
 
-### `npm test`
+### Verify Token
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Verify token component will take verification code , but only valid code is "112233" other than that if we used any other 6 digit alphanumeric code the we will get false status as reponse.
+when the status will be false-
+a) we will check for wrongEmailTokenCount, if it is 3 or more then we will send the user to the sign in page to start as fresh.
 
-### `npm run build`
+if the user put valid status code as "112233", status will become true-
+a) If the status is true and islogin is true , user will be redirected to the dashboard.
+b) If the status is true but islogin is false, user will be redirected to the sign up page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### SignUp
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In sign up page we are taking name, email, phone, referredcodekey, privacy policy as input from the user. Privacy policy is boolan checking whether user is accepting the policy or not. 
+referredcodekey is optional means even if we dont provide input for it, we will have successful sign up. but if it is given , it will be only valid if it matches "MAYANK" else we will get unsuccessful sign up.
+another thing that is token which we are passing in the post method along with other input is token , the token we got after verification of user referredcodekey. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Dashboard
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Here I am basically showing the name , email and phone number of an uder after successful login or successful sign up operation. along with this there will be on sign out button in the dashboard page.
+Signout api taking user id to sing out a particular user, and as it is using bearer token authentication so I needed to send bearer token as header to the sign out api to give permisson to do the sign out operation.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
